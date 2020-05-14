@@ -1,15 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EdgeUm8"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EdgeUm8.Favorites">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="EdgeUm8.Favorites"
+             BackgroundColor="#2E1FE3">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked"
+                     Priority="0"
+                     Order="Primary"
+                     Text="Profilsida"
+                     />
+
+        <ToolbarItem Clicked="ToolbarItem_Clicked"
+                     Priority="1"
+                     IconImageSource="profile.png"
+                     Order="Primary"
+                     />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowSpacing="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="0.2*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
+
+        <Label TextColor="AntiqueWhite" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" TextDecorations="Underline" FontSize="Title">Mina favoriter</Label>
+
+
+        <ListView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite">
+            <!--Header för ListView.-->
+            <ListView.Header>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ListView.Header>
+        </ListView>
+
+    </Grid>
+
+
 </ContentPage>

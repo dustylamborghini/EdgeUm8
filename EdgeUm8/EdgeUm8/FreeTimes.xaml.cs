@@ -16,7 +16,7 @@ namespace EdgeUm8
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FreeTimes : ContentPage 
     {
-        //private string apiUrl = "https://localhost:44340/";
+        private string apiUrl = "https://edgeum8remotedb.azurewebsites.net/api/";
         private List<House> data { get; set; }
         public FreeTimes()
         {
@@ -27,7 +27,7 @@ namespace EdgeUm8
 
         public async void FetchHouseData() {
             var httpClient = new HttpClient();
-            var response = await httpClient.GetStringAsync("https://edgeum8remotedb.azurewebsites.net/api/HouseApi");
+            var response = await httpClient.GetStringAsync(apiUrl + "HouseApi");
             var houseData = JsonConvert.DeserializeObject<List<House>>(response);
             data = houseData;
         }
@@ -46,6 +46,11 @@ namespace EdgeUm8
                 viewCell.View.BackgroundColor = Color.BlueViolet;
                 lastCell = viewCell;
             }
+        }
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e) {
+            await Navigation.PushAsync(new Profile());
+
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

@@ -7,6 +7,19 @@
              mc:Ignorable="d"
              x:Class="EdgeUm8.AdvFreeTimes"
              BackgroundColor="#2E1FE3">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked"
+                     Priority="0"
+                     Order="Primary"
+                     Text="Profilsida"
+                     />
+
+        <ToolbarItem Clicked="ToolbarItem_Clicked"
+                     Priority="1"
+                     IconImageSource="profile.png"
+                     Order="Primary"
+                     />
+    </ContentPage.ToolbarItems>
 
     <Grid RowSpacing="25">
 
@@ -34,7 +47,7 @@
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
 
-        <Button Text="Profile" BorderWidth="1.5" BorderColor="#000000" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100" HeightRequest="40" CornerRadius="100" Clicked="Button_Clicked"/>
+        
         <Label TextColor="AntiqueWhite" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" TextDecorations="Underline" FontSize="Title">Avancerad Sökning</Label>
 
         <Picker Title="Start:  " TitleColor="Black" BackgroundColor="AntiqueWhite" Grid.Row="3" HorizontalOptions="End" Grid.Column="1" Margin="0,0,30,0">

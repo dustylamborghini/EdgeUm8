@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CbbfMNFBJbFl61lG3dSBFix2VI5szNMkEG+nnF0dNNKXPSYSvjAqUXM06vUTPltmlp/qTPq6eAR/H/uHLcQ6tA==",
+  "dgSpecHash": "NbYFiv79qIpIG1XW9DNvBiQZkF89gnsIJyWnjSWEBSfzid7YO3pG/C83zrFzVjUjcI9Gyw88HtuG6Ed9M8yVIA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8.iOS\\EdgeUm8.iOS.csproj",
+  "projectFilePath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8.iOS\\EdgeUm8.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Orre B\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\Orre B\\.nuget\\packages\\sqlite-net-pcl\\1.6.292\\sqlite-net-pcl.1.6.292.nupkg.sha512",

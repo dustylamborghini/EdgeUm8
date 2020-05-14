@@ -2262,11 +2262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8.Android\\EdgeUm8.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8.Android\\EdgeUm8.Android.csproj",
       "projectName": "EdgeUm8.Android",
-      "projectPath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8.Android\\EdgeUm8.Android.csproj",
+      "projectPath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8.Android\\EdgeUm8.Android.csproj",
       "packagesPath": "C:\\Users\\Orre B\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8.Android\\obj\\",
+      "outputPath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2287,8 +2287,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj": {
-              "projectPath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj"
+            "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj": {
+              "projectPath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj"
             }
           }
         }

@@ -3579,11 +3579,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj",
+      "projectUniqueName": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj",
       "projectName": "EdgeUm8",
-      "projectPath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj",
+      "projectPath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj",
       "packagesPath": "C:\\Users\\Orre B\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8\\obj\\",
+      "outputPath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

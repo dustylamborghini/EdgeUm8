@@ -142,4 +142,7 @@
       <Name>EdgeUm8</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="profile.png" />
+  </ItemGroup>
 </Project>

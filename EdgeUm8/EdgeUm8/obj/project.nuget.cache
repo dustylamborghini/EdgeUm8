@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R+2flbBDTsHArmlS5dLjA1rlnWNLbvPgtiOdW04UvutO4Z4qkoWsvymdsJNFEN2vheAWhP1IwGR254VJGJ9rhQ==",
+  "dgSpecHash": "8ycy0IyG0v0jSNuYzgRnlsbJJZWJR06lbod8ErCkTswlxUyooeoIYApMONscKsHmxLI9ODUAHbG/RnPo75MlEg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Orre B\\source\\repos\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj",
+  "projectFilePath": "C:\\Users\\Orre B\\Documents\\GitHub\\EdgeUm8\\EdgeUm8\\EdgeUm8\\EdgeUm8.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Orre B\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\Orre B\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

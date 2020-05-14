@@ -14,16 +14,18 @@
               ItemsSource="{Binding MenuItems}">
       <d:ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MasterMasterMenuItem}">
-                
-                    <local:MasterMasterMenuItem Title="Profile" TargetType="{x:Type local:Profile}" />
-                    <local:MasterMasterMenuItem Title="Reservations" TargetType="{x:Type local:Reservations}" />
-                    <local:MasterMasterMenuItem Title="Free Times" TargetType="{x:Type local:FreeTimes}" />
-                    <local:MasterMasterMenuItem Title="Adv.Free Times" TargetType="{x:Type local:AdvFreeTimes}" />
-                    <local:MasterMasterMenuItem Title="Main Page" TargetType="{x:Type local:MainPage}" />
+
+                    <local:MasterMasterMenuItem Title="Startsida" TargetType="{x:Type local:MainPage}" />
+                    <local:MasterMasterMenuItem Title="Profilsida" TargetType="{x:Type local:Profile}" />
+                    <local:MasterMasterMenuItem Title="Mina bokningar" TargetType="{x:Type local:Reservations}" />
+                    <local:MasterMasterMenuItem Title="Favoriter" TargetType="{x:Type local:Favorites}" />
+                    <local:MasterMasterMenuItem Title="Lediga nu" TargetType="{x:Type local:FreeTimes}" />
+                    <local:MasterMasterMenuItem Title="Avancerad sökning" TargetType="{x:Type local:AdvFreeTimes}" />
 
 
                 </x:Array>
-      </d:ListView.ItemsSource>       
+      </d:ListView.ItemsSource>
+        
       <ListView.Header>
         <Grid BackgroundColor="#03A9F4">
           <Grid.ColumnDefinitions>
@@ -58,5 +60,6 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </StackLayout>
+        <Button Text="Logga ut" Clicked="Button_Clicked" BackgroundColor="Red"/>
+    </StackLayout>
 </ContentPage>
