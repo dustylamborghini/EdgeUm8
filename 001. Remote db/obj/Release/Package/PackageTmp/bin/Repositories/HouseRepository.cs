@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Remote_db.Models;
 
+
 namespace Remote_db.Repositories
 {
     public class HouseRepository : Repository<House, int>

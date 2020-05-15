@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="azure_remoteDb-Web.config Connection String" description="azure_remoteDb Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:edgeum8.database.windows.net,1433;Initial Catalog=edgeUm8;Persist Security Info=False;User ID=edgeum8;Password=#123ABCdef;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=120;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\source\\repos\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\bin\\Web\.config$" match="/configuration/connectionStrings/add[@name='azure_remoteDb']/@connectionString" />
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\source\\repos\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='azure_remoteDb']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\Documents\\GitHub\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\bin\\Web\.config$" match="/configuration/connectionStrings/add[@name='azure_remoteDb']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\Documents\\GitHub\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='azure_remoteDb']/@connectionString" />
   </parameter>
   <parameter name="Remote_db.Repositories.ApplicationDbContext-Web.config Connection String" description="Remote_db.Repositories.ApplicationDbContext Connection String used in web.config by the application to access the database." defaultValue="Remote_db.Repositories.ApplicationDbContext_ConnectionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\source\\repos\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Remote_db.Repositories.ApplicationDbContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\Documents\\GitHub\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Remote_db.Repositories.ApplicationDbContext']/@connectionString" />
   </parameter>
   <parameter name="azure_remoteDb_DatabasePublish-Web.config Connection String" description="azure_remoteDb_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="azure_remoteDb_DatabasePublish.ConnetionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\source\\repos\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='azure_remoteDb_DatabasePublish']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Orre\ B\\Documents\\GitHub\\EdgeUm8\\001\.\ Remote\ db\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='azure_remoteDb_DatabasePublish']/@connectionString" />
   </parameter>
 </parameters>

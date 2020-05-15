@@ -47,23 +47,12 @@
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
 
-        
-        <Label TextColor="AntiqueWhite" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalTextAlignment="Center" TextDecorations="Underline" FontSize="Title">Lediga nu</Label>
 
-        <Picker Title="Välj hus: " TitleColor="Black" BackgroundColor="AntiqueWhite" Grid.Row="3" HorizontalOptions="Center" Grid.Column="0" Grid.ColumnSpan="4">
-            <Picker.Items>
-                <x:String>B-Huset</x:String>
-                <x:String>F-Huset</x:String>
-                <x:String>G-Huset</x:String>
-                <x:String>L-Huset</x:String> <!--Adda binding SelectedItem på Pickern ^ tillsammans med backend för att veta vilket hus som är valt-->
-                <x:String>N-Huset</x:String>
-                <x:String>P-Huset</x:String>
-                <x:String>T-Huset</x:String>
-                <x:String>Bibblan</x:String>
-            </Picker.Items>
-        </Picker>
+        <Label TextColor="AntiqueWhite" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalTextAlignment="Center" TextDecorations="Underline" FontSize="Title" Text="{Binding LedigText}"/>
 
-        
+        <Picker Title="Välj hus: " TitleColor="Black" BackgroundColor="AntiqueWhite" Grid.Row="3" HorizontalOptions="Center" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding HouseNames}" SelectedIndexChanged="OnPickerSelectedIndexChanged" />
+
+
         <ListView Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" Margin="0,20,0,0">
             <!--Header för ListView.-->
             <ListView.Header>

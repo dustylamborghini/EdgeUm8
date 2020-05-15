@@ -18,14 +18,12 @@ namespace Remote_db.Controllers
     {
         private HouseRepository houses;
         private AvailableTimesRepository availableTimes;
-        private HouseRoomRepository rooms;
-        private static List<HouseViewModel> convertedData;
 
         public HouseApiController() {
             ApplicationDbContext context = new ApplicationDbContext();
             houses = new HouseRepository(context);
             availableTimes = new AvailableTimesRepository(context);
-            rooms = new HouseRoomRepository(context);
+            
             //SetHouseData();
         }
 

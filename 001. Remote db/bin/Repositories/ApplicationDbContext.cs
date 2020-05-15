@@ -12,6 +12,7 @@ using System.Data.Entity.Infrastructure;
 namespace Remote_db.Repositories {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
         public ApplicationDbContext() : base("azure_remoteDb", throwIfV1Schema: false) {
+            this.Configuration.ProxyCreationEnabled = false;
             Database.Log = s => Debug.WriteLine(s);
         }
 

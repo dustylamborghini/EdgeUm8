@@ -25,7 +25,7 @@ namespace EdgeUm8.Models
 
         public TimeSpan Closes { get; set; }
 
-        public byte[] MapPic { get; set; }
+        public string MapPic { get; set; }
 
         public List<HouseRoomViewModel> Rooms { get; set; }
     }

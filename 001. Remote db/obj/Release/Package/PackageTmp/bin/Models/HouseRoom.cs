@@ -16,6 +16,7 @@ namespace Remote_db.Models
         [ForeignKey("House")]
         public int HouseId { get; set; }
         public virtual House House { get; set; }
+
         public bool Projector { get; set; }
         public bool WhiteBoard { get; set; }
         public string MapPic { get; set; }        

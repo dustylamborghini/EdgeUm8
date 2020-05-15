@@ -9,14 +9,15 @@ namespace EdgeUm8.Models
 {
     public class HouseRoom
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public string Id { get; set; }
 
         [ForeignKey(typeof(House))]
         public int HouseId { get; set; }
+
         public bool Projector { get; set; }
         public bool WhiteBoard { get; set; }
-        public Byte[] MapPic { get; set; }
+        public string MapPic { get; set; }
     }
 
     public class HouseRoomViewModel

@@ -1,4 +1,5 @@
-﻿using EdgeUm8.Data;
+﻿using EdgeUm8.Api;
+using EdgeUm8.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace EdgeUm8
         public Login()
         {
             InitializeComponent();
+
+            WebApi.FetchHouseData();
+            WebApi.FetchRoomData();
             userData = new UserDB();
             txtUserName.ReturnCommand = new Command(() => txtPassword.Focus());
         }

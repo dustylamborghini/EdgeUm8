@@ -10,29 +10,22 @@ using Xamarin.Forms.Xaml;
 using System.Net.Http;
 using Newtonsoft.Json;
 using EdgeUm8.Models;
+using EdgeUm8.Api;
 
 namespace EdgeUm8
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FreeTimes : ContentPage 
     {
-        private string apiUrl = "https://edgeum8remotedb.azurewebsites.net/api/";
-        private List<House> data { get; set; }
+        private int selectedHouseId { get; set; }
+
         public FreeTimes()
         {
             InitializeComponent();
+            
             BindingContext = new FreeTimesViewModel();
-            FetchHouseData(); 
-        }
-
-        public async void FetchHouseData() {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetStringAsync(apiUrl + "HouseApi");
-            var houseData = JsonConvert.DeserializeObject<List<House>>(response);
-            data = houseData;
-        }
-
-
+            
+        }       
 
         /*När man trycker på en rad i listview så är den raden färgad annorlunda. Kan använda denna för att navigera till rum-sida.*/
         ViewCell lastCell;
@@ -46,6 +39,12 @@ namespace EdgeUm8
                 viewCell.View.BackgroundColor = Color.BlueViolet;
                 lastCell = viewCell;
             }
+        }
+
+        private void OnPickerSelectedIndexChanged(object sender, EventArgs e) {
+            Picker picker = sender as Picker;
+            var selectedHouse = picker.SelectedItem.ToString();
+            selectedHouseId = WebApi.FetchHouseIdByHouseName(selectedHouse);
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e) {
