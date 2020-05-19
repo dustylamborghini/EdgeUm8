@@ -17,7 +17,7 @@ namespace EdgeUm8.Data {
             _DibsDb.CreateTable<Dibs>();
         }
 
-        public IEnumerable<Dibs> GetUsers() {
+        public IEnumerable<Dibs> GetDibs() {
 
             return (from d in _DibsDb.Table<Dibs>()
 

@@ -37,9 +37,8 @@ namespace EdgeUm8
             var time = (AvailableTimes)timeCell.BindingContext;
             Dibs dib = new Dibs { AvailabilityId = time.Id, UserId = UserDB.currentUserId };
             var dibValid = dibs.AddDib(dib);
-            if (dibValid) {
-                DisplayAlert("Tingning", "Du har tingat tiden " + time.From.ToString() + " till " + time.To.ToString() + " i sal " + time.RoomId, "OK");
-            } else { DisplayAlert("Tingning", "Du kan inte tinga tiden " + time.From.ToString() + " till " + time.To.ToString() + " i sal " + time.RoomId + "för den är redan tingad, serrö!", "OK"); }
+            if (dibValid) { DisplayAlert("Tingning", "Du har tingat tiden " + time.From.ToString() + " till " + time.To.ToString() + " i sal " + time.RoomId, "OK"); }
+            else { DisplayAlert("Tingning", "Du kan inte tinga tiden " + time.From.ToString() + " till " + time.To.ToString() + " i sal " + time.RoomId + "för den är redan tingad, serrö!", "OK"); }
             if (lastCell != null)
                 lastCell.View.BackgroundColor = Color.Transparent;
             var viewCell = (ViewCell)sender;
@@ -55,7 +54,17 @@ namespace EdgeUm8
             var selectedHouse = picker.SelectedItem.ToString();
             selectedHouseId = WebApi.FetchHouseIdByHouseName(selectedHouse);
             IEnumerable<AvailableTimes> times = WebApi.FetchTimeDataByHouseId(selectedHouseId);
-            FreeTimesViewModel.SetTimesForSelectedHouse(times);
+            IEnumerable<Dibs> allDbDibs = dibs.GetDibs();
+            List<AvailableTimes> revisedTimes = new List<AvailableTimes>();
+            foreach (Dibs dib in allDbDibs) {
+                foreach (AvailableTimes time in times) {
+                    if (!dib.AvailabilityId.Equals(time.Id)) {
+                        revisedTimes.Add(time);
+                    }
+                }
+            }
+
+            FreeTimesViewModel.SetTimesForSelectedHouse(revisedTimes);
             TimesListView.ItemsSource = FreeTimesViewModel.freeTimesForSelection;
         }
 
