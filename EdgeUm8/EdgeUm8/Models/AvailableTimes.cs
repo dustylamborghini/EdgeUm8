@@ -9,10 +9,11 @@ namespace EdgeUm8.Models
     public class AvailableTimes
     {
         [PrimaryKey, AutoIncrement]
-        public int AvailabilityID { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey(typeof(HouseRoom))]
         public string RoomId { get; set; }
+
         public TimeSpan From { get; set; }
         public TimeSpan To { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using EdgeUm8.Api;
 using EdgeUm8.Data;
+using EdgeUm8.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,26 @@ namespace EdgeUm8
     public partial class Login : ContentPage
     {
         UserDB userData;
+        //CampusDB campusData;
+        
 
         public Login()
         {
             InitializeComponent();
-
+            //campusData = new CampusDB();
             WebApi.FetchHouseData();
             WebApi.FetchRoomData();
+            WebApi.FetchAvailableTimesData();
+            //foreach (House house in WebApi.GetAllHouses()) {
+            //    campusData.AddHouse(house);
+            //}
+            //foreach (HouseRoom room in WebApi.GetAllRooms()) {
+            //    campusData.AddRoom(room);
+            //}
+
+            //foreach (AvailableTimes time in WebApi.FetchTimeDataForAll()) {
+            //    campusData.AddTime(time);
+            //}
             userData = new UserDB();
             txtUserName.ReturnCommand = new Command(() => txtPassword.Focus());
         }

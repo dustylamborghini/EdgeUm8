@@ -11,6 +11,7 @@ namespace EdgeUm8.Api {
         private static string apiUrl = "https://edgeum8remotedb.azurewebsites.net/api/";
         private static List<House> houseData { get; set; }
         private static List<HouseRoom> roomData { get; set; }
+        private static List<AvailableTimes> timeData { get; set; }
 
         public static async void FetchHouseData() {
             var httpClient = new HttpClient();
@@ -20,11 +21,11 @@ namespace EdgeUm8.Api {
         }
 
         public static IEnumerable<string> FetchHouseNames() {
-            List<string> blabla = new List<string>();
+            List<string> houses = new List<string>();
             foreach (House house in houseData) {
-                blabla.Add(house.HouseName);
+                houses.Add(house.HouseName);
             }
-            return blabla;
+            return houses;
         }
 
         public static async void FetchRoomData() {
@@ -52,6 +53,56 @@ namespace EdgeUm8.Api {
                 }
             }
             return rooms;
+        }
+
+        public static async void FetchAvailableTimesData() {
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetStringAsync(apiUrl + "AvailableTimesApi");
+            var tempTimeData = JsonConvert.DeserializeObject<List<AvailableTimes>>(response);
+            timeData = tempTimeData;
+        }
+
+        public static IEnumerable<AvailableTimes> FetchTimeDataByRoomId(string id) {
+            List<AvailableTimes> times = new List<AvailableTimes>();
+            foreach (AvailableTimes time in timeData) {
+                if (time.RoomId.Equals(id)) {
+                    times.Add(time);
+                }
+            }
+            return times;
+        }
+
+        public static IEnumerable<AvailableTimes> FetchTimeDataByHouseId(int id) {
+            List<AvailableTimes> times = new List<AvailableTimes>();
+            List<string> roomIds = new List<string>();
+
+            foreach (HouseRoom room in roomData) {
+                if (room.HouseId.Equals(id)) {
+                    roomIds.Add(room.Id); 
+                }
+            }
+
+            foreach (AvailableTimes time in timeData) {
+                foreach (string roomId in roomIds) {
+                    var tempid = roomId;
+                    if (time.RoomId.Equals(tempid)) {
+                        times.Add(time);
+                    }
+                }
+            }
+            return times;
+        }
+
+        public static IEnumerable<AvailableTimes> FetchTimeDataForAll() {
+            return timeData;
+        }
+
+        public static List<House> GetAllHouses() {
+            return houseData;
+        }
+
+        public static List<HouseRoom> GetAllRooms() {
+            return roomData;
         }
 
     }

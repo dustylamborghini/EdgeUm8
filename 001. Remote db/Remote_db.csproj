@@ -289,13 +289,13 @@
     <Compile Include="App_Start\WebApiConfig.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Controllers\AvailableTimesApiController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Controllers\HouseApiController.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Controllers\HouseRoomApiController.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Controllers\RoomApiController.cs">
@@ -469,6 +469,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AvailableTimesApi\" />
     <Folder Include="Views\RoomApi\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

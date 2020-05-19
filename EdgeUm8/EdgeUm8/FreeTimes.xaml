@@ -53,7 +53,7 @@
         <Picker Title="Välj hus: " TitleColor="Black" BackgroundColor="AntiqueWhite" Grid.Row="3" HorizontalOptions="Center" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding HouseNames}" SelectedIndexChanged="OnPickerSelectedIndexChanged" />
 
 
-        <ListView Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" Margin="0,20,0,0">
+        <ListView x:Name="TimesListView"  Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" Margin="0,20,0,0" >
             <!--Header för ListView.-->
             <ListView.Header>
                 <Grid HorizontalOptions="FillAndExpand">
@@ -72,7 +72,28 @@
                     
                
             </ListView.Header>
-            <!--Exempeldata i ListView, kommer tas bort.-->
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+                    <ViewCell Tapped="ViewCell_Tapped">
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="RoomName" Text="{Binding RoomId}" HorizontalOptions="FillAndExpand" Grid.Column="0" Margin="15,0,0,0" />
+                            <Label x:Name="FromTime" Text="{Binding From}" HorizontalOptions="FillAndExpand" Grid.Column="1" Margin="15,0,0,0"/>
+                            <Label x:Name="ToTime" Text="{Binding To}" HorizontalOptions="FillAndExpand" Grid.Column="2" Margin="15,0,0,0"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--Exempeldata i ListView, kommer tas bort.--><!--
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:Room}">
                     <local:Room sal="N200" fran="1000" till="1300"/>
@@ -85,8 +106,8 @@
                 </x:Array>
 
             </ListView.ItemsSource>
-            <!--En template på hur varje rad i ListView kommer att se ut. Använder Tapped på ViewCell för att hantera event när man tycker på rad i listview.-->
-            <ListView.ItemTemplate>
+            --><!--En template på hur varje rad i ListView kommer att se ut. Använder Tapped på ViewCell för att hantera event när man tycker på rad i listview.-->
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Tapped="ViewCell_Tapped">
 
@@ -108,7 +129,7 @@
 
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
             <!--Filtrera namn och tider osv redan i iCal protokollet lr nåt och dubbelkolla mot bokade tider i databasen sen displaya dom här.-->
         </ListView>
 

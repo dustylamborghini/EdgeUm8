@@ -12,6 +12,7 @@ namespace EdgeUm8.Data
     public class UserDB
     {
         private SQLiteConnection _SQLiteConnection;
+        public static int currentUserId { get; set; }
 
         public UserDB() {
 
@@ -110,7 +111,11 @@ namespace EdgeUm8.Data
 
             var d1 = data.Where(x => x.Email == userName1 && x.Password == pwd1).FirstOrDefault();
 
+            
+
             if (d1 != null) {
+
+                currentUserId = d1.Id;
 
                 return true;
 

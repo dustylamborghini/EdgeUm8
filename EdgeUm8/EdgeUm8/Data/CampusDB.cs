@@ -1,142 +1,167 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using EdgeUm8.Interfaces;
-//using EdgeUm8.Models;
-//using System.Linq;
-//using Xamarin.Forms;
-//using SQLite;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using EdgeUm8.Interfaces;
+using EdgeUm8.Models;
+using System.Linq;
+using Xamarin.Forms;
+using SQLite;
+using System.Threading.Tasks;
 
-//namespace EdgeUm8.Data
-//{
-//    public class CampusDB
-//    {
-//        private SQLiteConnection _SQLiteConnection;
+namespace EdgeUm8.Data {
+    public class CampusDB {
+        private SQLiteConnection _SQLiteConnection;
 
-//        public CampusDB() {
+        public CampusDB() {
 
-//            _SQLiteConnection = DependencyService.Get<ISQLiteInterface>().GetSQLiteConnection();
+            _SQLiteConnection = DependencyService.Get<ISQLiteInterface>().GetSQLiteConnection();
 
-//            _SQLiteConnection.CreateTable<House>();
-//            _SQLiteConnection.CreateTable<HouseRoom>();
-//            _SQLiteConnection.CreateTable<AvailableTimes>();
-//        }
+            _SQLiteConnection.CreateTable<House>();
+            _SQLiteConnection.CreateTable<HouseRoom>();
+            _SQLiteConnection.CreateTable<AvailableTimes>();
+        }
 
-//        public IEnumerable<House> GetHouses() {
+        public IEnumerable<House> GetHouses() {
 
-//            return (from h in _SQLiteConnection.Table<House>()
+            return (from h in _SQLiteConnection.Table<House>()
 
-//                    select h).ToList();
+                    select h).ToList();
 
-//        }
+        }
 
-//        public IEnumerable<HouseRoom> GetRooms() {
+        public IEnumerable<HouseRoom> GetRooms() {
 
-//            return (from r in _SQLiteConnection.Table<HouseRoom>()
+            return (from r in _SQLiteConnection.Table<HouseRoom>()
 
-//                    select r).ToList();
-//        }
+                    select r).ToList();
+        }
 
-//        public AvailableTimesViewModel GetFreeTimesForRoom(string roomId) {
-                        
-//            var data = _SQLiteConnection.Table<AvailableTimes>();
-//            List<AvailableTimes> tempTimes = data.Where(t => t.RoomId == roomId).ToList();
-//            var allTimes = new AvailableTimesViewModel() { RoomId = roomId, TimesForRoom = tempTimes };
+        //public List<AvailableTimes>> GetTimesForSelectedHouse(int houseId){
+        //    //List<HouseRoom> roomsForSelectedHouse = _SQLiteConnection.Table<HouseRoom>().Where(r => r.HouseId.Equals(houseId)).ToList();
+        //    return _SQLiteConnection.Table<AvailableTimes>().Where(t => t.RoomId.Equals(_SQLiteConnection.Table<HouseRoom>().Where(r => r.HouseId.Equals(houseId))));
+        //}
 
-//            return allTimes;
-//        }
+        public AvailableTimesViewModel GetFreeTimesForRoom(string roomId) {
 
-//        public House GetSpecificHouse(int id) {
+            var data = _SQLiteConnection.Table<AvailableTimes>();
+            List<AvailableTimes> tempTimes = data.Where(t => t.RoomId == roomId).ToList();
+            var allTimes = new AvailableTimesViewModel() { RoomId = roomId, TimesForRoom = tempTimes };
 
-//            return _SQLiteConnection.Table<House>().FirstOrDefault(t => t.Id == id);
+            return allTimes;
+        }
 
-//        }
+        public House GetSpecificHouse(int id) {
 
-//        public void DeleteUser(int id) {
+            return _SQLiteConnection.Table<House>().FirstOrDefault(t => t.Id == id);
 
-//            _SQLiteConnection.Delete<User>(id);
+        }
 
-//        }
+        public void DeleteUser(int id) {
 
-//        public string AddUser(User user) {
+            _SQLiteConnection.Delete<User>(id);
 
-//            var data = _SQLiteConnection.Table<User>();
+        }
 
-//            var d1 = data.Where(x => x.Email == user.Email && x.UserName == user.UserName).FirstOrDefault();
+        public string AddHouse(House house) {
 
-//            if (d1 == null) {
+            var data = _SQLiteConnection.Table<House>();
 
-//                _SQLiteConnection.Insert(user);
+            var d1 = data.Where(x => x.Id == house.Id && x.HouseName == house.HouseName).FirstOrDefault();
 
-//                return "User Sucessfully Registered!";
+            if (d1 == null) {
 
-//            } else
+                _SQLiteConnection.Insert(house);
 
-//                return "Already Mail id Exist";
+                return "House Sucessfully Registered!";
 
-//        }
+            } else
 
-//        public bool updateUserValidation(string userid) {
+                return "House";
 
-//            var data = _SQLiteConnection.Table<User>();
+        }
+        public string AddRoom(HouseRoom room) {
 
-//            var d1 = (from values in data
+            var data = _SQLiteConnection.Table<HouseRoom>();
 
-//                      where values.Email == userid
+            var d1 = data.Where(x => x.Id.Equals(room.Id) && x.HouseId == room.HouseId).FirstOrDefault();
 
-//                      select values).Single();
+            if (d1 == null) {
 
-//            if (d1 != null) {
+                _SQLiteConnection.Insert(room);
 
-//                return true;
+                return "Room Sucessfully Registered!";
 
-//            } else
+            } else
 
-//                return false;
+                return "Room was duplicate!";
 
-//        }
+        }
 
-//        public bool updateUser(string username, string pwd) {
+        public string AddTime(AvailableTimes time) {
 
-//            var data = _SQLiteConnection.Table<User>();
+            var data = _SQLiteConnection.Table<AvailableTimes>();
 
-//            var d1 = (from values in data
+            var d1 = data.Where(x => x.Id == time.Id && x.RoomId == time.RoomId).FirstOrDefault();
 
-//                      where values.Email == username
+            if (d1 == null) {
 
-//                      select values).Single();
+                _SQLiteConnection.Insert(time);
 
-//            if (true) {
+                return "Available time Sucessfully Registered!";
 
-//                d1.Password = pwd;
+            } else
 
-//                _SQLiteConnection.Update(d1);
+                return "Time was duplicate!";
 
-//                return true;
+        }
 
-//            } else {
+        public bool updateUserValidation(string userid) {
 
-//                return false;
-//            }
+            var data = _SQLiteConnection.Table<User>();
 
-//        }
+            var d1 = (from values in data
 
-//        public bool LoginValidate(string userName1, string pwd1) {
+                      where values.Email == userid
 
-//            var data = _SQLiteConnection.Table<User>();
+                      select values).Single();
 
-//            var d1 = data.Where(x => x.Email == userName1 && x.Password == pwd1).FirstOrDefault();
+            if (d1 != null) {
 
-//            if (d1 != null) {
+                return true;
 
-//                return true;
+            } else
 
-//            } else
+                return false;
 
-//                return false;
+        }
 
-//        }
+        public bool updateUser(string username, string pwd) {
 
-//    }
-//}
+            var data = _SQLiteConnection.Table<User>();
+
+            var d1 = (from values in data
+
+                      where values.Email == username
+
+                      select values).Single();
+
+            if (true) {
+
+                d1.Password = pwd;
+
+                _SQLiteConnection.Update(d1);
+
+                return true;
+
+            } else {
+
+                return false;
+            }
+
+        }
+
+        
+
+    }
+}
 

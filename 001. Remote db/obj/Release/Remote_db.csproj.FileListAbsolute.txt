@@ -544,5 +544,5 @@ C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\obj\Release\Remote_db.cs
 C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\obj\Release\Remote_db.csproj.CopyComplete
 C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\obj\Release\Remote_db.dll
 C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\obj\Release\Remote_db.pdb
-C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\bin\Controllers\HouseRoomApiController.cs
 C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\bin\Controllers\RoomApiController.cs
+C:\Users\Orre B\Documents\GitHub\EdgeUm8\001. Remote db\bin\Controllers\AvailableTimesApiController.cs
