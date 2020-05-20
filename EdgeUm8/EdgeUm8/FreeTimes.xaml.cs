@@ -19,6 +19,7 @@ namespace EdgeUm8
     public partial class FreeTimes : ContentPage 
     {
         private int selectedHouseId { get; set; }
+        private List<AvailableTimes> updatedTimes { get; set; }
         DibsDb dibs;
 
         public FreeTimes()
@@ -53,19 +54,27 @@ namespace EdgeUm8
             Picker picker = sender as Picker;
             var selectedHouse = picker.SelectedItem.ToString();
             selectedHouseId = WebApi.FetchHouseIdByHouseName(selectedHouse);
+            CheckTimeDataForDibs();
+            FreeTimesViewModel.SetTimesForSelectedHouse(updatedTimes);
+            TimesListView.ItemsSource = FreeTimesViewModel.freeTimesForSelection;
+        }
+
+        public void CheckTimeDataForDibs() {
             IEnumerable<AvailableTimes> times = WebApi.FetchTimeDataByHouseId(selectedHouseId);
             IEnumerable<Dibs> allDbDibs = dibs.GetDibs();
             List<AvailableTimes> revisedTimes = new List<AvailableTimes>();
-            foreach (Dibs dib in allDbDibs) {
-                foreach (AvailableTimes time in times) {
-                    if (!dib.AvailabilityId.Equals(time.Id)) {
-                        revisedTimes.Add(time);
+            foreach (AvailableTimes time in times) {
+                bool matchFound = false; //life saver!
+                foreach (Dibs dib in allDbDibs) {
+                    if (dib.AvailabilityId.Equals(time.Id)) {
+                        matchFound = true;
                     }
                 }
+                if (!matchFound) {
+                    revisedTimes.Add(time);
+                }
             }
-
-            FreeTimesViewModel.SetTimesForSelectedHouse(revisedTimes);
-            TimesListView.ItemsSource = FreeTimesViewModel.freeTimesForSelection;
+            updatedTimes = revisedTimes;
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e) {
@@ -85,3 +94,22 @@ namespace EdgeUm8
         }
     }
 }
+
+//foreach (Dibs dib in allDbDibs) {                
+//    foreach (AvailableTimes time in times) {
+//        if (dib.AvailabilityId.Equals(time.Id)) {
+//            //if match - do NOTHING!
+//        } else { //otherwise, if they don't match - do SOMETHING!
+//            if (revisedTimes.Count > 0) {
+//                foreach (AvailableTimes revisedTime in revisedTimes) {
+//                    if (!revisedTime.Id.Equals(time.Id)) {
+//                        revisedTimes.Add(time);
+//                    }
+//                }
+//            } else {
+//                revisedTimes.Add(time);
+//            }
+
+//        }
+//    }                
+//}

@@ -26,16 +26,7 @@ namespace EdgeUm8
             WebApi.FetchHouseData();
             WebApi.FetchRoomData();
             WebApi.FetchAvailableTimesData();
-            //foreach (House house in WebApi.GetAllHouses()) {
-            //    campusData.AddHouse(house);
-            //}
-            //foreach (HouseRoom room in WebApi.GetAllRooms()) {
-            //    campusData.AddRoom(room);
-            //}
-
-            //foreach (AvailableTimes time in WebApi.FetchTimeDataForAll()) {
-            //    campusData.AddTime(time);
-            //}
+            
             userData = new UserDB();
             txtUserName.ReturnCommand = new Command(() => txtPassword.Focus());
         }

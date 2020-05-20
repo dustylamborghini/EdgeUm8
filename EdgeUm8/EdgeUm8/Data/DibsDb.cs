@@ -42,5 +42,22 @@ namespace EdgeUm8.Data {
                 return false;
 
         }
+
+        public bool EraseDib(Dibs dib) {
+
+            var dibToDelete = _DibsDb.Table<Dibs>().Where(d => d.AvailabilityId.Equals(dib.AvailabilityId) && d.UserId.Equals(dib.UserId));
+
+            _DibsDb.Delete<Dibs>(dibToDelete);
+
+            if (_DibsDb.Table<Dibs>().Where(d => d.AvailabilityId.Equals(dib.AvailabilityId)) != null) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public List<Dibs> GetDibsForUser(int userId) {
+            return _DibsDb.Table<Dibs>().Where(d => d.UserId == userId).ToList();
+        }
     }
 }

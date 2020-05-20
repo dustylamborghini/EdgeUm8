@@ -36,9 +36,9 @@ namespace EdgeUm8.Data {
                     select r).ToList();
         }
 
-        //public List<AvailableTimes>> GetTimesForSelectedHouse(int houseId){
+        //public List<AvailableTimes> GetTimesForSelectedHouse(int houseId) {
         //    //List<HouseRoom> roomsForSelectedHouse = _SQLiteConnection.Table<HouseRoom>().Where(r => r.HouseId.Equals(houseId)).ToList();
-        //    return _SQLiteConnection.Table<AvailableTimes>().Where(t => t.RoomId.Equals(_SQLiteConnection.Table<HouseRoom>().Where(r => r.HouseId.Equals(houseId))));
+        //    return _SQLiteConnection.Table<AvailableTimes>().Where(t => t.RoomId.Equals(_SQLiteConnection.Table<HouseRoom>().Where(r => r.HouseId.Equals(houseId)))).ToList();
         //}
 
         public AvailableTimesViewModel GetFreeTimesForRoom(string roomId) {

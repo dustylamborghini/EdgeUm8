@@ -49,7 +49,7 @@
         <Label TextColor="AntiqueWhite" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" TextDecorations="Underline" FontSize="Title">Mina Bokningar</Label>
 
 
-        <ListView Grid.Row="3" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite">
+        <ListView x:Name="DibsListView" Grid.Row="3" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite">
             <!--Header för ListView.-->
             <ListView.Header>
                 <Grid HorizontalOptions="FillAndExpand">
@@ -68,26 +68,13 @@
 
 
             </ListView.Header>
-            <!--Exempeldata i ListView, kommer tas bort.-->
-            <ListView.ItemsSource>
-                <x:Array Type="{x:Type local:Room}">
-                    <local:Room sal="N200" fran="1000" till="1300"/>
-                    <local:Room sal="N250" fran="1200" till="1600"/>
-                    <local:Room sal="N270" fran="1300" till="1700"/>
-                    <local:Room sal="N205" fran="1400" till="1800"/>
-                    <local:Room sal="N206" fran="1700" till="1900"/>
-                    <local:Room sal="N201" fran="2000" till="2100"/>
-
-                </x:Array>
-
-            </ListView.ItemsSource>
-            <!--En template på hur varje rad i ListView kommer att se ut. Använder Tapped på ViewCell för att hantera event när man tycker på rad i listview.-->
             <ListView.ItemTemplate>
+
                 <DataTemplate>
                     <ViewCell Tapped="ViewCell_Tapped">
-
                         <Grid HorizontalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
+
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -95,13 +82,10 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-
-
-                            <Label Text="{Binding sal}" FontSize="Large" HorizontalOptions="FillAndExpand" Grid.Column="0" Margin="15,0,0,0"></Label>
-                            <Label Text="{Binding fran}" FontSize="Large" HorizontalOptions="FillAndExpand"  Grid.Column="1" Margin="15,0,0,0"></Label>
-                            <Label Text="{Binding till}" FontSize="Large" HorizontalOptions="FillAndExpand"  Grid.Column="2" Margin="15,0,0,0"></Label>
+                            <Label x:Name="RoomName" Text="{Binding RoomId}" HorizontalOptions="FillAndExpand" Grid.Column="0" Margin="15,0,0,0" />
+                            <Label x:Name="FromTime" Text="{Binding From}" HorizontalOptions="FillAndExpand" Grid.Column="1" Margin="15,0,0,0"/>
+                            <Label x:Name="ToTime" Text="{Binding To}" HorizontalOptions="FillAndExpand" Grid.Column="2" Margin="15,0,0,0"/>
                         </Grid>
-
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

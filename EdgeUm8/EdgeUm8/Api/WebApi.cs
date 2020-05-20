@@ -5,6 +5,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using EdgeUm8.Models;
 using System.Collections;
+using System.Linq;
 
 namespace EdgeUm8.Api {
     public static class WebApi {
@@ -74,23 +75,39 @@ namespace EdgeUm8.Api {
 
         public static IEnumerable<AvailableTimes> FetchTimeDataByHouseId(int id) {
             List<AvailableTimes> times = new List<AvailableTimes>();
-            List<string> roomIds = new List<string>();
+            List<HouseRoom> roomsForSelectedHouse = new List<HouseRoom>();
 
             foreach (HouseRoom room in roomData) {
                 if (room.HouseId.Equals(id)) {
-                    roomIds.Add(room.Id); 
+                    roomsForSelectedHouse.Add(room); 
                 }
             }
 
             foreach (AvailableTimes time in timeData) {
-                foreach (string roomId in roomIds) {
-                    var tempid = roomId;
-                    if (time.RoomId.Equals(tempid)) {
+                foreach (HouseRoom room in roomsForSelectedHouse) {
+                    if (time.RoomId.Equals(room.Id)) {
                         times.Add(time);
                     }
                 }
             }
             return times;
+        }
+
+        public static List<AvailableTimes> GetTimesForUserDibs(List<Dibs> dibsForUser) {
+            List<AvailableTimes> timesForUser = new List<AvailableTimes>();
+            foreach (AvailableTimes time in timeData) {
+                bool matchFound = false;
+                foreach (Dibs dib in dibsForUser) {
+                    if (time.Id.Equals(dib.AvailabilityId)) {
+                        matchFound = true;
+                    }
+                }
+                if (matchFound) {
+                    timesForUser.Add(time);
+                }
+            }
+
+            return timesForUser;
         }
 
         public static IEnumerable<AvailableTimes> FetchTimeDataForAll() {
