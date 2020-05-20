@@ -64,9 +64,7 @@
                     <Label Text="Till:" TextColor="Black" BackgroundColor="AntiqueWhite" FontSize="Large" Grid.Column="2" Margin="15,0,0,0"/>
 
                 </Grid>
-
-
-
+                
             </ListView.Header>
             <ListView.ItemTemplate>
 

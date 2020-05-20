@@ -94,22 +94,3 @@ namespace EdgeUm8
         }
     }
 }
-
-//foreach (Dibs dib in allDbDibs) {                
-//    foreach (AvailableTimes time in times) {
-//        if (dib.AvailabilityId.Equals(time.Id)) {
-//            //if match - do NOTHING!
-//        } else { //otherwise, if they don't match - do SOMETHING!
-//            if (revisedTimes.Count > 0) {
-//                foreach (AvailableTimes revisedTime in revisedTimes) {
-//                    if (!revisedTime.Id.Equals(time.Id)) {
-//                        revisedTimes.Add(time);
-//                    }
-//                }
-//            } else {
-//                revisedTimes.Add(time);
-//            }
-
-//        }
-//    }                
-//}

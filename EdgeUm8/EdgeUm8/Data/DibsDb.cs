@@ -45,11 +45,13 @@ namespace EdgeUm8.Data {
 
         public bool EraseDib(Dibs dib) {
 
-            var dibToDelete = _DibsDb.Table<Dibs>().Where(d => d.AvailabilityId.Equals(dib.AvailabilityId) && d.UserId.Equals(dib.UserId));
+            var possibleDibsToDelete = _DibsDb.Table<Dibs>().Where(d => d.AvailabilityId.Equals(dib.AvailabilityId) && d.UserId.Equals(dib.UserId));
 
-            _DibsDb.Delete<Dibs>(dibToDelete);
+            var dibToDelete = possibleDibsToDelete.Where(d => d.AvailabilityId.Equals(dib.AvailabilityId)).FirstOrDefault();
 
-            if (_DibsDb.Table<Dibs>().Where(d => d.AvailabilityId.Equals(dib.AvailabilityId)) != null) {
+            _DibsDb.Delete<Dibs>(dibToDelete.Id);
+
+            if (dibToDelete == null) {
                 return false;
             } else {
                 return true;
