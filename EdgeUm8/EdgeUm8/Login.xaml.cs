@@ -15,14 +15,13 @@ namespace EdgeUm8
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        UserDB userData;
-        //CampusDB campusData;
-        
+        //prepare a UserDb for login validation
+        UserDB userData;        
 
+        //instanciate everything and fetch the latest updated data from the remote db.
         public Login()
         {
-            InitializeComponent();
-            //campusData = new CampusDB();
+            InitializeComponent();            
             WebApi.FetchHouseData();
             WebApi.FetchRoomData();
             WebApi.FetchAvailableTimesData();
@@ -31,6 +30,7 @@ namespace EdgeUm8
             txtUserName.ReturnCommand = new Command(() => txtPassword.Focus());
         }
 
+        //catch the click and validate entered information
         private async void Login_Button_Clicked(object sender, EventArgs e)
         {
             Navigation.InsertPageBefore(new Master(), this);
@@ -38,9 +38,7 @@ namespace EdgeUm8
 
                 var validData = userData.LoginValidate(txtUserName.Text, txtPassword.Text);
 
-                if (validData) {
-
-                    //await App.NavigationPageAsync(Login);
+                if (validData) {                    
                     await Navigation.PopAsync();
                     Application.Current.MainPage = new Master();
 
@@ -57,6 +55,7 @@ namespace EdgeUm8
             }
             
         }
+
         private async void Register_Button_Clicked(object sender, EventArgs e) {
 
             await Navigation.PushAsync(new Register());

@@ -1,9 +1,6 @@
 ﻿using Remote_db.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Remote_db.Models
 {
@@ -11,6 +8,7 @@ namespace Remote_db.Models
     {
         [Key]
         public int Id { get; set; }
+
         public string HouseName { get; set; }
 
         public TimeSpan Opens { get; set; }
@@ -18,10 +16,5 @@ namespace Remote_db.Models
         public TimeSpan Closes { get; set; }
 
         public string MapPic { get; set; }
-    }
-
-    public class HouseForUsers {
-        public int HouseId { get; set; }
-        public List<HouseRoomForUsers> Rooms { get; set; }
     }
 }

@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using EdgeUm8.Models;
-using System.Collections;
-using System.Linq;
 
 namespace EdgeUm8.Api {
     public static class WebApi {
+        //address to our api server in the cloud
         private static string apiUrl = "https://edgeum8remotedb.azurewebsites.net/api/";
+
+        //lists of the most vital models from the remote db
         private static List<House> houseData { get; set; }
         private static List<HouseRoom> roomData { get; set; }
         private static List<AvailableTimes> timeData { get; set; }
 
+        //method to fetch all houses from the remote db, asynchronous so that it can be awaited
         public static async void FetchHouseData() {
             var httpClient = new HttpClient();
             var response = await httpClient.GetStringAsync(apiUrl + "HouseApi");
@@ -21,6 +21,8 @@ namespace EdgeUm8.Api {
             houseData = tempHouseData;
         }
 
+        //extract a list of strings to populate listview of all houses for user.
+        //TODO: move to population class, refactor to accept listview as parameter.
         public static IEnumerable<string> FetchHouseNames() {
             List<string> houses = new List<string>();
             foreach (House house in houseData) {

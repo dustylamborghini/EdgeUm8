@@ -1,22 +1,15 @@
 ﻿using EdgeUm8.Api;
 using EdgeUm8.Models;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Text;
-using Xamarin.Forms;
-using System.Linq;
-using System.Collections.ObjectModel;
 
 namespace EdgeUm8.ViewModel
 {
     public class FreeTimesViewModel : INotifyPropertyChanged {
 
+        //holds a bindable collection of available times for the, by the user, currently selected house.
         public static IEnumerable<AvailableTimes> freeTimesForSelection { get; set; }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -29,26 +22,19 @@ namespace EdgeUm8.ViewModel
             }
         }
 
+        //gets a freshly updated list of house names from the remote db, used as itemssource for a listview.
         public IEnumerable<string> HouseNames { get { return WebApi.FetchHouseNames(); } }
 
+        //controller-method, to ensure data bindings are working... essentially useless in and of itself,
+        //but sometimes bindings stop working, and this gives us an instant visual que that it is happening.
         public string LedigText { get { return "Lediga nu"; } }
 
         public IEnumerable<AvailableTimes> AvailableTimes { get { return WebApi.FetchTimeDataForAll(); } }
-
         
 
         public static void SetTimesForSelectedHouse(IEnumerable<AvailableTimes> timesFromSelection) {
             freeTimesForSelection = timesFromSelection;
-        }
-
-        
-
-        
-
-        
-        //public List<string> SetHouseNames() {
-            
-        //}
+        }      
 
     }
 }

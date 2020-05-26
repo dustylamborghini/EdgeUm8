@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using EdgeUm8.Interfaces;
 using EdgeUm8.Models;
 using System.Linq;
@@ -15,10 +13,20 @@ namespace EdgeUm8.Data
         public static int currentUserId { get; set; }
 
         public UserDB() {
-
             _SQLiteConnection = DependencyService.Get<ISQLiteInterface>().GetSQLiteConnection();
-
             _SQLiteConnection.CreateTable<User>();
+        }
+
+        public string AddUser(User user) {
+            var data = _SQLiteConnection.Table<User>();
+            var d1 = data.Where(x => x.Email == user.Email && x.UserName == user.UserName).FirstOrDefault();
+
+            if (d1 == null) {
+                _SQLiteConnection.Insert(user);
+                return "User Sucessfully Registered!";
+            } else {
+                return "Already Mail id Exist";
+            }
 
         }
 
@@ -42,23 +50,7 @@ namespace EdgeUm8.Data
 
         }
 
-        public string AddUser(User user) {
-
-            var data = _SQLiteConnection.Table<User>();
-
-            var d1 = data.Where(x => x.Email == user.Email && x.UserName == user.UserName).FirstOrDefault();
-
-            if (d1 == null) {
-
-                _SQLiteConnection.Insert(user);
-
-                return "User Sucessfully Registered!";
-
-            } else
-
-                return "Already Mail id Exist";
-
-        }
+        
 
         public bool updateUserValidation(string userid) {
 

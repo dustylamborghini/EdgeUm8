@@ -3,36 +3,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
-using System.IO;
 namespace Remote_db.Repositories
 {
     public class ApplicationDbContextInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
-
-        //public ApplicationDbContextInitializer() { }
-
         protected override void Seed(ApplicationDbContext context) {
             base.Seed(context);
             SeedHouses(context);
         }
 
-        //public static byte[] setInitializerProfilePicture(string endPath) {
-        //    // Setting default avatar for all profiles
-        //    string path = AppDomain.CurrentDomain.BaseDirectory + endPath;
-        //    FileStream file = new FileStream(path, FileMode.Open);
-        //    byte[] avatar = null;
-        //    using (var binary = new BinaryReader(file)) {
-        //        avatar = binary.ReadBytes((int)file.Length);
-        //    }
-        //    return avatar;
-        //}
-
         public static void SeedHouses(ApplicationDbContext context) {
-            // Create the users
-            UserStore<ApplicationUser> store = new UserStore<ApplicationUser>(context);
-            UserManager<ApplicationUser> manager = new UserManager<ApplicationUser>(store);
-
-
             House Nova = new House { HouseName = "Nova", Opens = new TimeSpan(06, 00, 00), Closes = new TimeSpan(23, 00, 00) };            
             House Lang = new House { HouseName = "Långhuset", Opens = new TimeSpan(00, 00, 00), Closes = new TimeSpan(23, 59, 59) };
             House Teknik = new House { HouseName = "Teknikhuset", Opens = new TimeSpan(00, 00, 00), Closes = new TimeSpan(23, 59, 59) };
@@ -62,106 +42,7 @@ namespace Remote_db.Repositories
             AvailableTimes Time6 = new AvailableTimes { RoomId = P104.Id, From = new TimeSpan(09, 00, 00), To = new TimeSpan(10, 00, 00) };
             AvailableTimes Time7 = new AvailableTimes { RoomId = B187.Id, From = new TimeSpan(09, 00, 00), To = new TimeSpan(10, 00, 00) };
             context.FreeIntervals.AddRange(new[] { Time1, Time2, Time3, Time4, Time5, Time6, Time7 });
-            context.SaveChanges();
-            //ApplicationUser eliasU = new ApplicationUser {
-            //    UserName = "elias@noodler.com",
-            //    Email = "elias@noodler.com",
-            //};
-            //manager.Create(eliasU, "password");
-
-            //ApplicationUser nicoU = new ApplicationUser {
-            //    UserName = "nico@noodler.com",
-            //    Email = "nico@noodler.com"
-            //};
-            //manager.Create(nicoU, "password");
-
-            //ApplicationUser oskarU = new ApplicationUser {
-            //    UserName = "oskar@noodler.com",
-            //    Email = "oskar@noodler.com"
-            //};
-            //manager.Create(oskarU, "password");
-
-            //ApplicationUser randomU = new ApplicationUser {
-            //    UserName = "random@noodler.com",
-            //    Email = "random@noodler.com"
-            //};
-            //manager.Create(randomU, "password");
-            //ApplicationUser corazonU = new ApplicationUser {
-            //    UserName = "corazon@noodler.com",
-            //    Email = "corazon@noodler.com"
-            //};
-            //manager.Create(corazonU, "password");
-
-            //ApplicationUser andreasU = new ApplicationUser {
-            //    UserName = "andreas@noodler.com",
-            //    Email = "andreas@noodler.com"
-            //};
-            //manager.Create(andreasU, "password");
-
-            //ApplicationUser mathiasU = new ApplicationUser {
-            //    UserName = "mathias@noodler.com",
-            //    Email = "mathias@noodler.com"
-            //};
-            //manager.Create(mathiasU, "password");
-            //ApplicationUser lightU = new ApplicationUser {            //    UserName = "light@noodler.com",
-            //    Email = "light@noodler.com"
-            //};
-            //manager.Create(lightU, "password");
-            //ApplicationUser hakU = new ApplicationUser {
-            //    UserName = "hak@noodler.com",
-            //    Email = "hak@noodler.com"
-            //};
-            //manager.Create(hakU, "password");
-            //ApplicationUser alfonsU = new ApplicationUser {
-            //    UserName = "alfons@noodler.com",
-            //    Email = "alfons@noodler.com"
-            //};
-            //manager.Create(alfonsU, "password");
-
-            //// Define friendships
-            //FriendModels friends1 = new FriendModels {
-            //    UserId = nicoU.Id,
-            //    FriendId = oskarU.Id,
-            //    FriendCategory = category1.Id
-            //};
-            //FriendModels friends2 = new FriendModels {
-            //    UserId = nicoU.Id,
-            //    FriendId = eliasU.Id,
-            //    FriendCategory = category2.Id
-            //};
-            //FriendModels friends3 = new FriendModels {
-            //    UserId = eliasU.Id,
-            //    FriendId = corazonU.Id,
-            //    FriendCategory = category3.Id
-            //};
-            //FriendModels friends4 = new FriendModels {
-            //    UserId = oskarU.Id,
-            //    FriendId = randomU.Id,
-            //    FriendCategory = category1.Id
-            //};
-            //FriendModels friends5 = new FriendModels {
-            //    UserId = oskarU.Id,
-            //    FriendId = alfonsU.Id,
-            //    FriendCategory = category1.Id
-            //};
-            //FriendModels friends6 = new FriendModels {
-            //    UserId = eliasU.Id,
-            //    FriendId = lightU.Id,
-            //    FriendCategory = category1.Id
-            //};
-            //FriendModels friends7 = new FriendModels {
-            //    UserId = andreasU.Id,
-            //    FriendId = eliasU.Id,
-            //    FriendCategory = category1.Id
-            //};
-            //FriendModels friends8 = new FriendModels {
-            //    UserId = nicoU.Id,
-            //    FriendId = hakU.Id,
-            //    FriendCategory = category1.Id
-            //};
-
-            //context.Friends.AddRange(new[] { friends1, friends2, friends3, friends4, friends5, friends6, friends7, friends8 }); // Add friendships
-            //context.SaveChanges();
+            context.SaveChanges();            
         }
     }
 }

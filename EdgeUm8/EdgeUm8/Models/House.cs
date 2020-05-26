@@ -10,15 +10,7 @@ namespace EdgeUm8.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string HouseName { get; set; }
-        public TimeSpan Opens { get; set; }
-        public TimeSpan Closes { get; set; }
-        public Byte[] MapPic { get; set; }
 
-    }
-
-    public class HouseViewModel
-    {
         public string HouseName { get; set; }
 
         public TimeSpan Opens { get; set; }
@@ -26,7 +18,5 @@ namespace EdgeUm8.Models
         public TimeSpan Closes { get; set; }
 
         public string MapPic { get; set; }
-
-        public List<HouseRoomViewModel> Rooms { get; set; }
     }
 }
